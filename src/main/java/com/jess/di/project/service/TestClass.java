@@ -1,6 +1,6 @@
 package com.jess.di.project.service;
 
-import com.jess.di.stereotype.MyAutowired;
+import com.jess.di.annotation.MyAutowired;
 import com.jess.di.stereotype.MyComponent;
 
 /**

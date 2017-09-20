@@ -1,6 +1,6 @@
 package com.jess.di.support;
 
-import com.jess.di.stereotype.MyAutowired;
+import com.jess.di.annotation.MyAutowired;
 import com.jess.di.stereotype.MyComponent;
 
 import java.lang.reflect.Field;
@@ -29,7 +29,6 @@ public class MyBeanFactory {
         }
     }
 
-    // -> isCandidate()
     private void setResources(String resource) {
 
         MyBeanDefinition beanDefinition = new MyBeanDefinition();
@@ -41,11 +40,7 @@ public class MyBeanFactory {
             e.printStackTrace();
         }
 
-        if(clazz.isInterface()) {
-            return;
-        }
-
-        if(!clazz.isAnnotationPresent(MyComponent.class)){
+        if(isNotCandidate(clazz)) {
             return;
         }
 
@@ -58,7 +53,7 @@ public class MyBeanFactory {
             }
         }
 
-        String beanName = beanNameStrategy(clazz);
+        String beanName = getBeanNameStrategy(clazz);
 
         beanNames.add(beanName);
         beanDefinition.setAutowiredMode(autowiredCnt);
@@ -67,9 +62,20 @@ public class MyBeanFactory {
         beanDefinitions.put(beanName, beanDefinition);
     }
 
+    private boolean isNotCandidate(Class clazz) {
+        if(clazz.isInterface()) {
+            return true;
+        }
+
+        if(!clazz.isAnnotationPresent(MyComponent.class)){
+            return true;
+        }
+
+        return false;
+    }
 
     // -> utils?
-    private String beanNameStrategy(Class clazz) {
+    private String getBeanNameStrategy(Class clazz) {
 
         String clazzName =clazz.getSimpleName();
         String s1 = clazzName.substring(0, 1).toLowerCase();
@@ -80,8 +86,6 @@ public class MyBeanFactory {
     public void initializeBean(MyBeanDefinition beanDefinition) {
 
         //고려 안함 beanDefinition.getInitMethod(); beanDefinition.getDestroyMethod();
-
-
 
         Object instance = null;
         try {
@@ -97,13 +101,9 @@ public class MyBeanFactory {
         beanDefinition.setBean(instance);
     }
 
-
-
-
-
-
-
-
+    public Optional<Object> getBean(String beanName) {
+        return singletonObjects.stream().filter( item -> getBeanNameStrategy(item.getClass()).equals(beanName)).findFirst();
+    }
 
     public Map<String, MyBeanDefinition> getBeanDefinitions() {
         return beanDefinitions;
@@ -137,8 +137,4 @@ public class MyBeanFactory {
         this.beanNames = beanNames;
     }
 
-
-    public Optional<Object> getBean(String beanName) {
-        return singletonObjects.stream().filter( item -> beanNameStrategy(item.getClass()).equals(beanName)).findFirst();
-    }
 }
