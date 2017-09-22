@@ -38,8 +38,9 @@ public class MyApplicationContext {
         beanFactory.setResources(resources);
     }
 
-    public void parse() {
 
+    public void parse() {
+        //TODO : 옵션 기능이 추가된다면, 파싱하여 빈 생성시 고려해야 함
     }
 
 

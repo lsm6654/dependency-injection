@@ -1,6 +1,7 @@
-package com.jess.di;
+package com.jess.di.project;
 
 
+import com.jess.di.MyApplicationContext;
 import com.jess.di.project.service.OtherService;
 import com.jess.di.project.service.TestClass;
 

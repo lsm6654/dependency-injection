@@ -53,7 +53,7 @@ public class MyBeanFactory {
             }
         }
 
-        String beanName = getBeanNameStrategy(clazz);
+        String beanName = getBeanNameByDefaultStrategy(clazz);
 
         beanNames.add(beanName);
         beanDefinition.setAutowiredMode(autowiredCnt);
@@ -75,7 +75,7 @@ public class MyBeanFactory {
     }
 
     // -> utils?
-    private String getBeanNameStrategy(Class clazz) {
+    private String getBeanNameByDefaultStrategy(Class clazz) {
 
         String clazzName =clazz.getSimpleName();
         String s1 = clazzName.substring(0, 1).toLowerCase();
@@ -102,7 +102,7 @@ public class MyBeanFactory {
     }
 
     public Optional<Object> getBean(String beanName) {
-        return singletonObjects.stream().filter( item -> getBeanNameStrategy(item.getClass()).equals(beanName)).findFirst();
+        return singletonObjects.stream().filter( item -> getBeanNameByDefaultStrategy(item.getClass()).equals(beanName)).findFirst();
     }
 
     public Map<String, MyBeanDefinition> getBeanDefinitions() {
