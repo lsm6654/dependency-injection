@@ -1,4 +1,4 @@
-package com.jess.di.annotation;
+package com.jess.app.di.annotation;
 
 import java.lang.annotation.*;
 

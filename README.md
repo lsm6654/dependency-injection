@@ -13,8 +13,11 @@ basePackage 밑으로 있는 @MyComponent 어노테이션을 사용한 클래스
 @MyAutowired 를 통해 빈 필드 주입 가능. (필드로만 주입가능)
 스프링의 다양한 옵션 기능 없음.<br/>
 
-com.jess.di.project 하위의 클래스가 일반 스프링을 사용하는 어플리케이션 코드
-com.jess.di 패키지(project 패키지 제외)가 spring-context 와 같은 부분<br/><br/> 
+<br/>
+multi project
+
+application : 일반 어플리케이션 프로젝트 <br/>
+di : 의존성 주입 프로젝트 (spring-context 같은 프로젝트) 
 
 
 <h3>보완사항</h3>

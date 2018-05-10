@@ -1,4 +1,4 @@
-package com.jess.di.support;
+package com.jess.app.di.support;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

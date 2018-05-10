@@ -1,8 +1,8 @@
-package com.jess.di;
+package com.jess.app.di;
 
-import com.jess.di.support.MyBeanFactory;
-import com.jess.di.support.MyClassLoader;
-import com.jess.di.support.PostProcessorRegistration;
+import com.jess.app.di.support.MyBeanFactory;
+import com.jess.app.di.support.MyClassLoader;
+import com.jess.app.di.support.PostProcessorRegistration;
 
 import java.io.IOException;
 import java.util.List;

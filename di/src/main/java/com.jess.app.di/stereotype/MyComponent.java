@@ -1,4 +1,4 @@
-package com.jess.di.stereotype;
+package com.jess.app.di.stereotype;
 
 import java.lang.annotation.*;
 

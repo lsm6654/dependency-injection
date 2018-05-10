@@ -1,7 +1,7 @@
-package com.jess.di.project.service;
+package com.jess.app.service;
 
-import com.jess.di.annotation.MyAutowired;
-import com.jess.di.stereotype.MyComponent;
+import com.jess.app.di.annotation.MyAutowired;
+import com.jess.app.di.stereotype.MyComponent;
 
 /**
  * Created by jess.lee on 2017. 9. 20..

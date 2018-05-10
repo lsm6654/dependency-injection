@@ -1,7 +1,7 @@
-package com.jess.di.support;
+package com.jess.app.di.support;
 
-import com.jess.di.annotation.MyAutowired;
-import com.jess.di.stereotype.MyComponent;
+import com.jess.app.di.annotation.MyAutowired;
+import com.jess.app.di.stereotype.MyComponent;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -38,6 +38,7 @@ public class MyBeanFactory {
             clazz = Class.forName(resource);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            return;
         }
 
         if(isNotCandidate(clazz)) {
@@ -77,7 +78,7 @@ public class MyBeanFactory {
     // -> utils?
     private String getBeanNameByDefaultStrategy(Class clazz) {
 
-        String clazzName =clazz.getSimpleName();
+        String clazzName = clazz.getSimpleName();
         String s1 = clazzName.substring(0, 1).toLowerCase();
 
         return s1 + clazzName.substring(1);

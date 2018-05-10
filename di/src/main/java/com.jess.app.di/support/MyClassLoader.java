@@ -1,6 +1,7 @@
-package com.jess.di.support;
+package com.jess.app.di.support;
 
-import com.google.common.reflect.ClassPath;
+import com.jess.app.di.stereotype.MyComponent;
+import org.reflections.Reflections;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -42,7 +43,9 @@ public class MyClassLoader extends ClassLoader {
 
     public List<String> findAllResources(String classPath) throws IOException {
 
-        List<String> resources = ClassPath.from(this).getResources().stream().filter(clazz -> clazz.toString().startsWith(classPath)).map(resource -> resource.toString()).collect(toList());
+        //TODO : 나중에 classLoader 공부할겸 리소스 불러오는 것도 구현해보자
+        List<String> resources = new Reflections(classPath).getTypesAnnotatedWith(MyComponent.class).stream().map(clazz -> clazz.getTypeName()).collect(toList());
+
 
         return resources;
     }
