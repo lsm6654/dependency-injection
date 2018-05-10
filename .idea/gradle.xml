@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/application" />
+            <option value="$PROJECT_DIR$/di" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
